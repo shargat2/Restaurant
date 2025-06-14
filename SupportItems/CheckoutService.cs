@@ -32,7 +32,6 @@ public class CheckoutService
             }
         }
 
-        // 10% service charge on food only (starters and mains)
         decimal foodTotal = 0;
         foreach (var item in order.GetItems())
         {

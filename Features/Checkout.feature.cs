@@ -96,7 +96,7 @@ namespace Restaurant.Features
                 this.ScenarioStart();
                 testRunner.Given("a group of 4 orders 4 starters, 4 mains and 4 drinks at 20:00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
                 testRunner.When("the bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-                testRunner.Then("the total bill should be 57.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                testRunner.Then("the total bill should be 58.40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             }
             this.ScenarioCleanup();
         }
@@ -117,10 +117,10 @@ namespace Restaurant.Features
             else
             {
                 this.ScenarioStart();
-                testRunner.Given("a group of 2 orders 1 starter, 2 mains and 2 drinks at 18:00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                testRunner.Given("a group of 2 orders 1 starters, 2 mains and 2 drinks at 18:00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
                 testRunner.And("later at 20:00 2 more join and order 2 mains and 2 drinks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
                 testRunner.When("the final bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-                testRunner.Then("the total bill should be 47.50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                testRunner.Then("the total bill should be 43.70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             }
             this.ScenarioCleanup();
         }
@@ -144,7 +144,7 @@ namespace Restaurant.Features
                 testRunner.Given("a group of 4 orders 4 starters, 4 mains and 4 drinks at 19:30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
                 testRunner.And("one member cancels their order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
                 testRunner.When("the final bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-                testRunner.Then("the total bill should be 42.75", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                testRunner.Then("the total bill should be 43.80", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             }
             this.ScenarioCleanup();
         }
