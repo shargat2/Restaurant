@@ -1,6 +1,7 @@
 ﻿using Restaurant.SupportItems;
 using Restaurant.SupportItems.Models;
 using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using Xunit;
 
@@ -12,7 +13,7 @@ public class CheckoutSteps
     private Order _order = new Order();
     private CheckoutService _checkoutService = new CheckoutService();
     private decimal _finalBill;
-
+    private List<decimal> _intermediateBills = new List<decimal>();
 
     [Given(@"a group of (.*) orders (.*) starters, (.*) mains and (.*) drinks at (.*)")]
     public void GivenAGroupOfOrdersStarterMainsAndDrinksAt(int people, int starters, int mains, int drinks, string time)
@@ -23,7 +24,7 @@ public class CheckoutSteps
         _order.AddItems(OrderType.Drink, drinks, orderTime);
     }
 
-    [Given(@"later at (.*) (.*) more join and order (.*) mains and (.*) drinks")]
+    [Then(@"later at (.*) (.*) more join and order (.*) mains and (.*) drinks")]
     public void LaterJoinAndOrder(string time, int people, int mains, int drinks)
     {
         var orderTime = DateTime.Parse(time);
@@ -31,12 +32,26 @@ public class CheckoutSteps
         _order.AddItems(OrderType.Drink, drinks, orderTime);
     }
 
-    [Given(@"one member cancels their order")]
+    [Then(@"one member cancels their order")]
     public void GivenOneMemberCancelsTheirOrder()
     {
         _order.RemoveItems(OrderType.Starter, 1);
         _order.RemoveItems(OrderType.Main, 1);
         _order.RemoveItems(OrderType.Drink, 1);
+    }
+
+    [When(@"the intermediate bill is requested")]
+    public void WhenTheIntermediateBillIsRequested()
+    {
+        var bill = _checkoutService.CalculateBill(_order);
+        _intermediateBills.Add(bill);
+    }
+
+    [Then(@"the intermediate bill at step (.*) should be (.*)")]
+    public void ThenTheIntermediateBillAtStepShouldBe(int step, decimal expectedBill)
+    {
+        Assert.True(step > 0 && step <= _intermediateBills.Count, $"Step {step} is out of range.");
+        Assert.Equal(expectedBill, _intermediateBills[step - 1]);
     }
 
     [When(@"the bill is requested")]
