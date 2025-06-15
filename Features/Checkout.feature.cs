@@ -37,8 +37,8 @@ namespace Restaurant.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Features", "Restaurant Checkout System", "  Calculates the total bill including service charge and discounts based on item " +
-                    "type and time.", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Features", "Restaurant Checkout System", "Calculates the total bill including service charge and discounts based on item ty" +
+                    "pe and time.", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -95,6 +95,29 @@ namespace Restaurant.Features
             {
                 this.ScenarioStart();
                 testRunner.Given("a group of 4 orders 4 starters, 4 mains and 4 drinks at 20:00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                testRunner.When("the bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                testRunner.Then("the total bill should be 58.40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Group of 4 orders full meals at 19")]
+        [Xunit.TraitAttribute("FeatureTitle", "Restaurant Checkout System")]
+        [Xunit.TraitAttribute("Description", "Group of 4 orders full meals at 19")]
+        public void GroupOf4OrdersFullMealsAt19()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Group of 4 orders full meals at 19", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            this.ScenarioInitialize(scenarioInfo);
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                testRunner.Given("a group of 4 orders 4 starters, 4 mains and 4 drinks at 19:00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
                 testRunner.When("the bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
                 testRunner.Then("the total bill should be 58.40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             }
@@ -167,6 +190,32 @@ namespace Restaurant.Features
             {
                 this.ScenarioStart();
                 testRunner.Given("a group of 4 orders 4 starters, 4 mains and 4 drinks at 19:30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                testRunner.When("the intermediate bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                testRunner.Then("the intermediate bill at step 1 should be 58.40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                testRunner.Then("one member cancels their order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                testRunner.When("the final bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                testRunner.Then("the total bill should be 43.80", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Group of 4 orders, one cancels at 19")]
+        [Xunit.TraitAttribute("FeatureTitle", "Restaurant Checkout System")]
+        [Xunit.TraitAttribute("Description", "Group of 4 orders, one cancels at 19")]
+        public void GroupOf4OrdersOneCancelsAt19()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Group of 4 orders, one cancels at 19", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            this.ScenarioInitialize(scenarioInfo);
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                testRunner.Given("a group of 4 orders 4 starters, 4 mains and 4 drinks at 19:00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
                 testRunner.When("the intermediate bill is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
                 testRunner.Then("the intermediate bill at step 1 should be 58.40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
                 testRunner.Then("one member cancels their order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

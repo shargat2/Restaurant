@@ -26,14 +26,14 @@ public class CheckoutService
                     subtotal += MainPrice;
                     break;
                 case OrderType.Drink:
-                    bool discounted = item.Time.TimeOfDay < DiscountCutoff;
+                    bool discounted = item.Time.TimeOfDay < DiscountCutoff; //assume that at 19:00 or later, drinks are not discounted
                     subtotal += DrinkPrice * (discounted ? 1 - DrinkDiscount : 1);
                     break;
             }
         }
 
         decimal foodTotal = 0;
-        foreach (var item in order.GetItems())
+        foreach (var item in order.GetItems())// assuming food items are only starters and mains
         {
             if (item.Type == OrderType.Starter) foodTotal += StarterPrice;
             if (item.Type == OrderType.Main) foodTotal += MainPrice;
