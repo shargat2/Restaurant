@@ -9,7 +9,7 @@ public class CheckoutService
     private readonly decimal MainPrice = 7.00m;
     private readonly decimal DrinkPrice = 2.50m;
     private readonly decimal DrinkDiscount = 0.30m;
-    private readonly TimeSpan DiscountCutoff = new TimeSpan(19, 0, 0);
+    private readonly TimeSpan DiscountCutoff = new(19, 0, 0);
 
     public decimal CalculateBill(Order order)
     {

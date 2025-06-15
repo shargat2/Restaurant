@@ -10,10 +10,10 @@ namespace Restaurant;
 [Binding]
 public class CheckoutSteps
 {
-    private Order _order = new Order();
-    private CheckoutService _checkoutService = new CheckoutService();
+    private readonly Order _order = new();
+    private readonly CheckoutService _checkoutService = new();
     private decimal _finalBill;
-    private List<decimal> _intermediateBills = new List<decimal>();
+    private readonly List<decimal> _intermediateBills = [];
 
     [Given(@"a group of (.*) orders (.*) starters, (.*) mains and (.*) drinks at (.*)")]
     public void GivenAGroupOfOrdersStarterMainsAndDrinksAt(int people, int starters, int mains, int drinks, string time)

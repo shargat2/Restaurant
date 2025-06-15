@@ -6,7 +6,7 @@ namespace Restaurant.SupportItems;
 
 public class Order
 {
-    private List<OrderItem> _items = new List<OrderItem>();
+    private readonly List<OrderItem> _items = [];
 
     public void AddItems(OrderType type, int quantity, DateTime time)
     {
